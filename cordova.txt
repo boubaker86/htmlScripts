@@ -1,0 +1,36 @@
+cordova create NomDossier com.package.name AppName
+cd NomDossier
+cordova platform add browser
+cordova platform add android
+===> 	"Copy the game to www"
+cordova run browser
+===>	"Config.xml"========================
+cordova plugin add cordova-plugin-codeplay-facebookads-free
+<platform name="android">
+	<allow-intent href="market:*" />
+	<preference name="Fullscreen" value="true" />
+			<icon src="res/mipmap-mdpi/ic_launcher.png" density="mdpi" />
+			<icon src="res/mipmap-hdpi/ic_launcher.png" density="hdpi" />
+			<icon src="res/mipmap-xhdpi/ic_launcher.png" density="xhdpi" />
+			<icon src="res/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" />
+			<icon src="res/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
+			<preference name="Fullscreen" value="true" />
+</platform>
+============================================
+cordova build android
+cordova plugin add cordova-plugin-spinner
+cordova plugin add cordova-plugin-admob-free --save --variable ADMOB_APP_ID="ca-app-pub-3940256099942544~3347511713"
+com-artemisoftnian-plugins-unityads3
+
+===================================================
+cordova plugin add cordova-plugin-screen-orientation
+
+// set to either landscape or portrait
+screen.orientation.lock('portrait');
+
+// Exit event for backbutton on android
+document.addEventListener("backbutton", function(e){
+	e.preventDefault();
+	navigator.app.exitApp();
+}
+, false);
