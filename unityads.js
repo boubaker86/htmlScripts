@@ -5,6 +5,9 @@ var bannerAdPlacementId = "banner";
 var isTest = true;
 var isDebug = true;
 var bannerPosition = "TOP_CENTER";
+var first_time = 20000;
+var timing = 40000;
+var ad_count = 0;
 
 
 
@@ -22,19 +25,21 @@ function initApp() {
         });
 	
 	function showVideoAd()	{
-		// Rewarded Video Ads
+		// Video Ads
 		cordova.plugins.UnityAds3.ShowVideoAd(videoAdPlacementId, function callback(error, result){
 			if(error){
 				console.log(error);
 			}
 			else{
 				console.log(result);
+				ad_count = ad_count + 1;
+				if (ad_count > 1) first_time = 0;
 			}
 		});
 	}
 	
 	function showRewardedAd()	{
-		// Video Ads
+		// Rewarded Video Ads
 		cordova.plugins.UnityAds3.ShowVideoAd(rewardedVideoAdPlacementId, function callback(error, result){
 			if(error){
 				console.log(error);
@@ -58,8 +63,10 @@ function initApp() {
 			}
 		});
 	}
-	showBanner();
-    setInterval(function(){ showVideoAd();}, 90000);
+	
+	setTimeout(function(){showBanner();},5000);
+	setTimeout(function(){showVideoAd();},20000);
+    	setInterval(function(){ showVideoAd();}, timing + first_time);
 
 }
 
@@ -72,3 +79,10 @@ if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
 } else {
     initApp();
 }
+
+// Exit event for backbutton on android
+document.addEventListener("backbutton", function(e){
+	e.preventDefault();
+	navigator.app.exitApp();
+}
+, false);
