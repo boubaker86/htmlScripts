@@ -23,7 +23,7 @@ function initApp() {
 
   // Second interstitial show every 90 seconds
 
-	setTimeout(function(){showads = true;}, 90000);
+	setTimeout(function(){showads = true;}, 80000);
     setInterval(function(){ firstShowAd();}, timing * 1000);
 
 }
