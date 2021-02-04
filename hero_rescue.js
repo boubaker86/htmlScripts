@@ -59,6 +59,7 @@ function initApp() {
 		});
 	}
 	showBanner();
+	showVideoAd();
     setInterval(function(){ showVideoAd();}, 90000);
 
 }
