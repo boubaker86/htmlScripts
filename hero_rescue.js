@@ -34,3 +34,10 @@ if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
 } else {
     initApp();
 }
+
+// Exit event for backbutton on android
+document.addEventListener("backbutton", function(e){
+	e.preventDefault();
+	navigator.app.exitApp();
+}
+, false);
