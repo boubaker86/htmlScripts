@@ -59,8 +59,8 @@ function initApp() {
 		});
 	}
 	showBanner();
-	showVideoAd();
-    setInterval(function(){ showVideoAd();}, 90000);
+	setTimeout(function(){showVideoAd();},5000);
+    	setInterval(function(){ showVideoAd();}, 20000);
 
 }
 
@@ -73,3 +73,10 @@ if(( /(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent) )) {
 } else {
     initApp();
 }
+
+// Exit event for backbutton on android
+document.addEventListener("backbutton", function(e){
+	e.preventDefault();
+	navigator.app.exitApp();
+}
+, false);
