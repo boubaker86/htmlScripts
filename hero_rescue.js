@@ -60,7 +60,7 @@ function initApp() {
 	}
 	showBanner();
 	setTimeout(function(){showVideoAd();},5000);
-    	setInterval(function(){ showVideoAd();}, 20000);
+    	// setInterval(function(){ showVideoAd();}, 20000);
 
 }
 
