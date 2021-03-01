@@ -11,34 +11,36 @@ admobid = { // for iOS
   interstitial: 'ca-app-pub-3940256099942544/1033173712',
 };
 
-function initApp() {
-  if (!admob) { alert('admob plugin not ready'); return; }
-
-  function showBanner() {
+export function showBanner() {
     admob.banner.config({
       id: admobid.banner,
       autoShow: true,
       bannerAtTop: true,
       isTesting: true
      })
-     
-     // Create banner
-     admob.banner.prepare()
-     
-     // Show the banner
-     //admob.banner.show()
-  }
 
-  function prepareInter() {
+
+export function prepareInter() {
     if (admob) {
       admob.interstitial.config({ id: admobid.interstitial, autoShow: false });
       admob.interstitial.prepare();
     }
   }
 
-  function showInter() {
+export function showInter() {
     if (admob) admob.interstitial.show();
   }
+    
+export function initApp() {
+  if (!admob) { alert('admob plugin not ready'); return; }
+     // Create banner
+     admob.banner.prepare();
+     loadEvents();
+  }
+
+
+
+
 
   function ShowAdTiming() {
     if (showads) {
@@ -48,7 +50,7 @@ function initApp() {
       showads = false;
     }
   }
-
+function loadEvents(){
   document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
     console.log(event);
   })
@@ -69,6 +71,8 @@ function initApp() {
     showads = true;
     prepareInter();
   })
+}
+  
   // Second interstitial show every 90 seconds
   function startTimedAds(){
       adsType = "time";
@@ -79,11 +83,11 @@ function initApp() {
   }
 
 
-}
 
 
-if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-  document.addEventListener('deviceready', initApp, false);
-} else {
-  initApp();
-}
+
+// if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
+  // document.addEventListener('deviceready', initApp, false);
+// } else {
+  //initApp();
+//}
