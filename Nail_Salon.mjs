@@ -18,6 +18,7 @@ export function showBanner() {
       bannerAtTop: true,
       isTesting: true
      })
+}
 
 
 export function prepareInter() {
