@@ -18,6 +18,7 @@ export function showBanner() {
       bannerAtTop: true,
       isTesting: true
      })
+  admob.banner.prepare();
 }
 
 
@@ -35,7 +36,7 @@ export function showInter() {
 export function initApp() {
   if (!admob) { alert('admob plugin not ready'); return; }
      // Create banner
-     admob.banner.prepare();
+     
      loadEvents();
   }
 
