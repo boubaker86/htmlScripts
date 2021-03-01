@@ -11,7 +11,7 @@ admobid = { // for iOS
   interstitial: 'ca-app-pub-3940256099942544/1033173712',
 };
 
-export function showBanner() {
+function showBanner() {
     admob.banner.config({
       id: admobid.banner,
       autoShow: true,
@@ -22,18 +22,18 @@ export function showBanner() {
 }
 
 
-export function prepareInter() {
+function prepareInter() {
     if (admob) {
       admob.interstitial.config({ id: admobid.interstitial, autoShow: false });
       admob.interstitial.prepare();
     }
   }
 
-export function showInter() {
+function showInter() {
     if (admob) admob.interstitial.show();
   }
     
-export function initApp() {
+function initApp() {
   if (!admob) { alert('admob plugin not ready'); return; }
      // Create banner
      
@@ -88,8 +88,8 @@ function loadEvents(){
 
 
 
-// if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
-  // document.addEventListener('deviceready', initApp, false);
-// } else {
-  //initApp();
-//}
+if ((/(ipad|iphone|ipod|android|windows phone)/i.test(navigator.userAgent))) {
+  document.addEventListener('deviceready', initApp, false);
+} else {
+  initApp();
+}
