@@ -1,6 +1,7 @@
 var admobid = {};
 var showads = false;
 var isTest = true;
+var adloaded = false;
 var adsType="";
 var firstTime = 30000;
 var secondTime = 30000;
@@ -34,7 +35,7 @@ function showInter() {
   }
     
 function initApp() {
-  if (!admob) { alert('admob plugin not ready'); return; }
+  //if (!admob) { alert('admob plugin not ready'); return; }
      // Create banner
      
      loadEvents();
@@ -58,13 +59,15 @@ function loadEvents(){
   })
   
   document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
-    setTimeout(function () { prepareInter(); }, 3000);
+    adloaded = false;
+    setTimeout(function () { prepareInter(); }, 5000);
     console.log(event);
   })
 
   document.addEventListener('admob.interstitial.events.LOAD', function(event) {
     console.log(event);
-    setTimeout(function () { prepareInter(); }, 3000);
+    //if (!adloaded) setTimeout(function () { prepareInter(); }, 5000);
+    adloaded = true;
   })
   
   document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
