@@ -17,7 +17,7 @@ function showBanner() {
       id: admobid.banner,
       autoShow: true,
       bannerAtTop: true,
-      isTesting: true
+      isTesting: isTest
      })
   admob.banner.prepare();
 }
@@ -25,7 +25,7 @@ function showBanner() {
 
 function prepareInter() {
     if (admob) {
-      admob.interstitial.config({ id: admobid.interstitial, autoShow: false });
+      admob.interstitial.config({ id: admobid.interstitial, autoShow: false, isTesting: isTest });
       admob.interstitial.prepare();
     }
   }
